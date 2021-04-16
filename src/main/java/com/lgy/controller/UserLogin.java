@@ -22,6 +22,7 @@ public class UserLogin {
     UserService userService;
     @RequestMapping("/fuck")
     public List<User> login(){
+        System.out.println(1);
         return userService.found(1);
     }
    /* @RequestMapping("/login")
