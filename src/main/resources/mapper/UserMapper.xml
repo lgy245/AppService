@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgy.mapper.UserMapper">
+    <select id="found" resultType="User" parameterType="int" >
+        select * from sys_users where id =#{id}
+    </select>
+    <select id="foundbyUsername" resultType="User" parameterType="String" >
+        select * from sys_users where name =#{username} and passworld = #{passworld}
+    </select>
+    <select id="foundbyUsernameExistence" resultType="User" parameterType="String" >
+        select * from sys_users where name =#{username}
+    </select>
+    <insert id="inesrtUser" parameterType="User">
+        insert into sys_users values (#{id} ,#{name},#{age},#{passworld})
+    </insert>
+
+</mapper>
