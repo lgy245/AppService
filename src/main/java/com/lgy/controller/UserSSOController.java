@@ -1,5 +1,6 @@
 package com.lgy.controller;
 
+import com.lgy.customAnnotation.UserLoginToken;
 import com.lgy.pojo.UserSSO;
 import com.lgy.service.UserSSOService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class UserSSOController {
     public Object findbyO(@RequestParam(value = "userName") String userName,@RequestParam(value = "passWorld") String passWorld){
         return userSSOService.findByIdOb(userName,passWorld);
     }
+    @UserLoginToken
     @RequestMapping("/getMessage")
     public String getMessage(){
         return "通过验证";

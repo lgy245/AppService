@@ -1,5 +1,6 @@
 package com.lgy.interceptor;
 
+import com.alibaba.fastjson.JSON;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -68,7 +69,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 }
                 //验证token 是否可用
                 // 获取密匙
-                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(list.get(0).getPassworld())).build();
+                String usso = JSON.toJSONString(list.get(0));
+                UserSSO userSSO = JSON.parseObject(usso,UserSSO.class);
+                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(userSSO.getPassworld())).build();
                 // 验证密匙
                 try{
                     jwtVerifier.verify(token);
