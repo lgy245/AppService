@@ -6,6 +6,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.lgy.customAnnotation.PassToken;
 import com.lgy.customAnnotation.UserLoginToken;
 import com.lgy.pojo.UserSSO;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
+import java.util.Date;
 import java.util.List;
 
 /*
@@ -72,9 +74,12 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 String usso = JSON.toJSONString(list.get(0));
                 UserSSO userSSO = JSON.parseObject(usso,UserSSO.class);
                 JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(userSSO.getPassworld())).build();
+
                 // 验证密匙
                 try{
                     jwtVerifier.verify(token);
+                }catch (TokenExpiredException a ){
+                    throw new RuntimeException("token 失效");
                 }catch (JWTVerificationException e){
                     throw new RuntimeException("验证token 失败");
                 }
