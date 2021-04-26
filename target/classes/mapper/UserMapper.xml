@@ -6,7 +6,7 @@
     <select id="found" resultType="User" parameterType="int" >
         select * from sys_users where id =#{id}
     </select>
-    <!--<select id="foundbyUsername" resultType="User" parameterType="String" >
+    <select id="foundbyUsername" resultType="User" parameterType="String" >
         select * from sys_users where name =#{username} and passworld = #{passworld}
     </select>
     <select id="foundbyUsernameExistence" resultType="User" parameterType="String" >
@@ -14,6 +14,6 @@
     </select>
     <insert id="inesrtUser" parameterType="User">
         insert into sys_users values (#{id} ,#{name},#{age},#{passworld})
-    </insert>-->
+    </insert>
 
 </mapper>

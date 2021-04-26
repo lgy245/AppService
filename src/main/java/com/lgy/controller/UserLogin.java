@@ -2,13 +2,9 @@ package com.lgy.controller;
 
 import com.lgy.pojo.User;
 import com.lgy.service.UserService;
-import com.lgy.until.Until;
-import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /*
@@ -17,6 +13,7 @@ import java.util.List;
  *@date 2021/4/8 14:30
  ****/
 @RestController
+@RequestMapping("/user")
 public class UserLogin {
     @Autowired
     UserService userService;
