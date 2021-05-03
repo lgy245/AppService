@@ -79,7 +79,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 try{
                     jwtVerifier.verify(token);
                 }catch (TokenExpiredException a ){
-                    throw new RuntimeException("token 失效");
+                    throw new RuntimeException("登录超时，请重新登录");
                 }catch (JWTVerificationException e){
                     throw new RuntimeException("验证token 失败");
                 }
