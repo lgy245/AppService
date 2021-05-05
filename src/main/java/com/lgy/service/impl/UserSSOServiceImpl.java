@@ -55,7 +55,7 @@ public class UserSSOServiceImpl implements UserSSOService {
                 UserSSO userSSO = new UserSSO();
                 userSSO.setName(userName);
                 userSSO.setPassworld(passWorld);
-                String token = Until.getToken(userSSO);
+                String token = Until.getToken(userSSO);//生成token
                 //放入并返回
                 jsonObject.put("token",token);
                 jsonObject.put("user",list);
